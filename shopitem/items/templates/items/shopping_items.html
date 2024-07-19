@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Items</title>
+</head>
+<body>
+    <h1>Shopping Items</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <table>
+            {% for form in formset %}
+                <tr>
+                    <td>{{ form.name.label_tag }}</td>
+                    <td>{{ form.name }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.price.label_tag }}</td>
+                    <td>{{ form.price }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.discount.label_tag }}</td>
+                    <td>{{ form.discount }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
